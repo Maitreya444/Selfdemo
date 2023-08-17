@@ -39,3 +39,4 @@ function askQuestion(rl: readline.Interface, question: string): Promise<string>
         })
     })
 }
+main()
