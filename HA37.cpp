@@ -63,13 +63,68 @@ class Strings
 
             cout << "Concatenated string: " << str1 << endl;
         }
+
+        bool StrCmpX()
+        {
+            if(*str1 != *str2)
+            {
+                return false;
+            }
+
+            if(*str1 =='\0' && *str2 =='\0')
+            {
+                return true;
+            }
+        }
+
+        bool StrNCmpX()
+        {
+            if(iNo > 0 && *str1 != '\0' && *str2 !='\0')
+            {
+                if(*str1 != *str2)
+                {
+                    return false;
+                }
+                str1++;
+                str2++;
+            }
+            return true;
+        }
+
+        void StrRevTogX()
+        {
+            char * tempstr1 = str1;
+
+            while(*tempstr1 != '\0')
+            {
+                tempstr1++;
+            }
+            tempstr1 --;
+
+            while((tempstr1 >= str1))
+            {
+                if(*tempstr1 >= 'A' && *tempstr1 <= 'Z')
+                {
+                    *tempstr1 = *tempstr1 + 32;
+                    cout<<*tempstr1; 
+                }
+                else if(*tempstr1 >='a' && *tempstr1 <= 'z')
+                {
+                    *tempstr1 = *tempstr1 -32;
+                    cout<<*tempstr1;
+                }
+                *tempstr1--;
+            }
+        }
 };
 
 int main() 
 {
     int iValue = 0;
+    bool bRet = 0;
     char Arr1[100];
     char Arr2[100];
+    bool cRet = 0;
 
     cout << "Enter First String: ";
     cin.getline(Arr1, 100);
@@ -82,6 +137,34 @@ int main()
 
     Strings aobj(Arr1, Arr2, iValue);
     aobj.StrCatX();
+
+    Strings bobj(Arr1, Arr2, iValue);
+    bRet = bobj.StrCmpX();
+
+    if(bRet == true)
+    {
+        cout<<"TRUE"<<"\n";
+    }
+    else
+    {
+        cout<<"FALSE"<<"\n";
+    }
+
+    Strings cobj(Arr1, Arr2, iValue);
+    cRet = cobj.StrNCmpX();
+
+    if(cRet == true)
+    {
+        cout<<"c TRUE"<<"\n";
+    }
+    else
+    {
+        cout<<"c FALSE"<<"\n";
+    }
+
+
+    Strings dobj(Arr1, Arr2, iValue);
+    dobj.StrRevTogX();
 
     return 0;
 }
